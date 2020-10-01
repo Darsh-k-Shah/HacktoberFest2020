@@ -1,4 +1,4 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 /**
@@ -9,49 +9,36 @@ using namespace std;
  * \returns index where the key-value occurs in the array
  * \returns -1 if key-value not found
  */
-int LinearSearch(int *array, int size, int key)
-{
-    for (int i = 0; i < size; ++i)
-    {
-        if (array[i] == key)
-        {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-/** main function */
 int main()
 {
-    int size;
-    cout << "\nEnter the size of the Array : ";
-    cin >> size;
-
-    int *array = new int[size];
-    int key;
+    vector <int> v;
+    int key,size;
+    int flag = 0;
 
     // Input array
-    cout << "\nEnter the Array of " << size << " numbers : ";
+    cout<<"Enter number of elements\n";
+    cin>>size;
+    cout << "\nEnter elements of the Array to be searched which is to be searched";
     for (int i = 0; i < size; i++)
     {
-        cin >> array[i];
+        cin >> key;
+        v.push_back(key);
     }
 
     cout << "\nEnter the number to be searched : ";
     cin >> key;
-
-    int index = LinearSearch(array, size, key);
-    if (index != -1)
+    
+    for(int i = 0;i<v.size();i++)
     {
-        cout << "\nNumber found at index : " << index;
+        if(v[i] == key)
+        {
+            flag = 1;
+            cout<<"Found at position: "<<i + 1<<"\n";
+            break;
+        }
     }
-    else
-    {
-        cout << "\nNot found";
-    }
-
-    delete[] array;
+    
+    if (flag == 0)
+        cout << "Number not found\n";
     return 0;
 }
